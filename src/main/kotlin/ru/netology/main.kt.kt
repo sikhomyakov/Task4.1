@@ -1,8 +1,11 @@
 package ru.netology
 
 fun main() {
+    val cardType = "Visa"
+    val amountTransfersThisMonth = 80000
+    val amountTransfer = 15000
 
-    println(limitsCheck("Vk Pay", 0, 54670))
+    limitsCheck(cardType, amountTransfersThisMonth, amountTransfer)
 }
 
 fun commissionCalculate(cardType: String, amountTransfersThisMonth: Int, amountTransfer: Int): Int =
@@ -17,14 +20,16 @@ fun commissionCalculate(cardType: String, amountTransfersThisMonth: Int, amountT
     }
 
 fun limitsCheck(cardType: String, amountTransfersThisMonth: Int, amountTransfer: Int) {
-    if (cardType == "Vk Pay" && (amountTransfer > 15000 || amountTransfersThisMonth > 40000)) {
-        println("Проевышен лимит переводов")
-    }
-    else if (amountTransfer <= 150000 || amountTransfersThisMonth <= 600000) {
+    if (cardType == "Vk Pay" && (amountTransfersThisMonth > 40000 || amountTransfer > 15000)) {
+        println("Превышен лимит переводов")
+    } else if (amountTransfersThisMonth < 600000 && amountTransfer < 150000) {
         val commission = commissionCalculate(cardType, amountTransfersThisMonth, amountTransfer)
         println("Ваша комиссия составляет ${commission / 100} руб. ${commission % 100} коп.")
+    } else {
+        println("Превышен лимит переводов")
     }
 }
+
 
 
 
