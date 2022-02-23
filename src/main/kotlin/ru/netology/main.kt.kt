@@ -1,9 +1,9 @@
 package ru.netology
 
 fun main() {
-    val cardType = "Visa"
-    val amountTransfersThisMonth = 500000
-    val amountTransfer = 15000
+    val cardType = "Vk Pay"
+    val amountTransfersThisMonth = 0
+    val amountTransfer = 1000
 
     limitsCheck(cardType, amountTransfersThisMonth, amountTransfer)
 }
