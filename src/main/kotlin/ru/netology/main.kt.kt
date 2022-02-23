@@ -1,13 +1,25 @@
 package ru.netology
 
 fun main() {
-    val amountRub = 53460
-    val minComissionRub = 35
-    val penniesInRub = 100
 
-    val amount = amountRub * penniesInRub
-    val minComission = minComissionRub * penniesInRub
-    val comission = amount * 0.0075
-    val fullComission = if (comission < minComission) minComission  else comission
-    println("Ваша комиссия составляет: ${fullComission.toInt() / 100} рублей ${fullComission.toInt() % 100} копеек")
+    println(commissionCalculate("Visa", 0, 5467))
 }
+
+fun commissionCalculate(cardType: String, amountTransfersThisMonth: Int, amountTransfer: Int): Int =
+    when (cardType) {
+        "Maestro", "MasterCard" -> {
+            if (amountTransfersThisMonth <= 75000) 0 else ((amountTransfer * 0.006 + 20) * 100).toInt()
+        }
+        "Visa", "Мир" -> {
+            if (amountTransfer * 0.0075 > 35) ((amountTransfer * 0.0075) * 100).toInt() else 35 * 100
+        }
+        else -> 0
+    }
+
+fun limitsCheck(cardType: String, amountTransfersThisMonth: Int, amountTransfer: Int) {
+
+
+}
+
+
+
