@@ -3,7 +3,7 @@ package ru.netology
 import org.junit.Test
 
 import org.junit.Assert.*
-import org.junit.Ignore
+
 
 class MainKtTest {
 
@@ -32,7 +32,7 @@ class MainKtTest {
     }
 
     @Test
-    @Ignore
+
     fun limitsCheck() {
         val cardType = "Maestro"
         val amountTransfersThisMonth = 75_000
